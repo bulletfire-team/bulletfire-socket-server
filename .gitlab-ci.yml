@@ -1,0 +1,17 @@
+cache:
+  paths:
+  - node_modules/
+  
+before_script:
+    - apt-get update -qq && apt-get install -y -qq sshpass
+
+deploy_prod:
+    stage: deploy
+    environment: Production
+    only:
+        - master
+    script:
+        - sshpass -V
+        - export SSHPASS=$USER_PASS
+        - sshpass -e scp -o stricthostkeychecking=no -r . iutlyon1-ptut-robotscompagnons@ssh-iutlyon1-ptut-robotscompagnons.alwaysdata.net:~/www/BulletFireApp
+        
