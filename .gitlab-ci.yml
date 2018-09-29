@@ -13,5 +13,5 @@ deploy_prod:
     script:
         - sshpass -V
         - export SSHPASS=$USER_PASS
-        - sshpass -e scp -o stricthostkeychecking=no -r . iutlyon1-ptut-robotscompagnons@ssh-iutlyon1-ptut-robotscompagnons.alwaysdata.net:~/www/BulletFireApp
+        - sshpass -e scp -o stricthostkeychecking=no -r . iutlyon1-ptut-robotscompagnons@ssh-iutlyon1-ptut-robotscompagnons.alwaysdata.net:~/www/BulletFireSocket
         
