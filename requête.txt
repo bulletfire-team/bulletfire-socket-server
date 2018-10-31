@@ -1,0 +1,25 @@
+SendFriendRequest : 	INSERT INTO FRIEND
+						VALUES([pseudo de ce joueur], pseudo, 0);
+
+AcceptFriendRequest : 	UPDATE FRIEND SET request=1
+						WHERE nickname1=pseudo
+						AND nickname2=[pseudo de ce joueur];
+
+RefuseFriendRequest : 	DELETE FROM FRIEND
+						WHERE nickname1=pseudo
+						AND nickname2=[pseudo de ce joueur]
+						AND request=0;
+						
+GetFriends : 			SELECT nickname1, nickname2 FROM FRIEND
+						WHERE (nickname1=[pseudo de ce joueur] 
+						OR nickname2=[pseudo de ce joueur])
+						AND request=1;
+						
+DeleteFriend : 			DELETE FROM FRIEND
+						WHERE ((nickname1=pseudo AND nickname2=[pseudo de ce joueur])
+						OR (nickname2=pseudo AND nickname1=[pseudo de ce joueur]))
+						AND request=1;
+
+GetFriendRequests : 	SELECT nickname1 FROM FRIEND
+						WHERE nickname2=[pseudo de ce joueur]
+						AND request=0;
